@@ -1,0 +1,85 @@
+<html ng-app="crudAtendimento">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<script src="lib/angular.min.js"></script>
+<script src="lib/angular-resource.min.js"></script>
+<script src="js/controllers.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+</head>
+
+<body>
+	<div ng-controller="AtendimentoController" class="well"
+		style="width: 700px; margin-top: 60px; margin-left: auto; margin-right: auto;">
+
+		<table>
+			<tr class="row">
+				<td class="col-xs-2">
+					<button class="btn btn-default" ng-click="novo()">Novo</button>
+				</td>
+				<td class="col-xs-3">
+					<button class="btn btn-default" ng-click="salvar()">Salvar</button>
+				</td>
+				<td class="col-xs-2">
+					<button class="btn btn-default" ng-click="editar()">Editar</button>
+				</td>
+				<td class="col-xs-4">
+					<button class="btn btn-default" ng-click="excluir()">Excluir</button>
+				</td>
+			</tr>
+		</table>
+
+
+		<hr />
+		<form name="atendimentoForm" class="form-inline">
+			<table>
+
+				<tr class="row">
+					<td class="col-xs-2">Protocolo:</td>
+					<td class="col-xs-3"><input type="text" style="width: 100px;"
+						ng-model="atendimento.protocolo" /></td>
+				</tr>
+
+				<tr class="row">
+					<td class="col-xs-2">Nome Cliente:</td>
+					<td class="col-xs-3"><input type="text" style="width: 330px;"
+						ng-model="atendimento.nomeCliente" /></td>
+				</tr>
+				<tr class="row">
+					<td class="col-xs-2">Detalhamento:</td>
+					<td class="col-xs-3"><input type="text" style="width: 330px;"
+						ng-model="atendimento.detalhamento" /></td>
+				</tr>
+				<tr class="row">
+					<td class="col-xs-2">Nota Atendimento:</td>
+					<td class="col-xs-3"><select name="selectedFacilityId" ng-model="atendimento.atendimentoEnum" />
+						<option value="">Nota Atendimento</option>
+						<option value="EXCELENTE">Excelente</option>
+						<option value="OTIMO">Ótimo</option>
+						<option value="BOM">Bom</option>
+						<option value="RUIM">Ruim</option> </select></td>
+				</tr>
+			</table>
+		</form>
+		<hr />
+		<input type="text" class="form-control" ng-model="criterio"
+			placeholder="O que você está procurando?" /><br />
+		<table class="table table-striped">
+			<tr>
+				<th>Nome Cliente</th>
+				<th>Protocolo</th>
+				<th>Detalhamento</th>
+				<th>Nota Atendimento</th>
+			</tr>
+			<tr ng-repeat="atendimento in atendimentos | filter:criterio" ng-click="seleciona(atendimento)">
+				<td>{{atendimento.nomeCliente}}</td>
+				<td>{{atendimento.protocolo}}</td>
+				<td>{{atendimento.detalhamento}}</td>
+				<td>{{atendimento.atendimentoEnum}}</td>
+			</tr>
+		</table>
+		<span ng-show="(fornecedores | filter:criterio).length == 0">Infelizmente
+			não temos o item que você está procurando!</span>
+	</div>
+</body>
+</html>
