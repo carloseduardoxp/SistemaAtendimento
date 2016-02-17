@@ -9,9 +9,7 @@
 
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
-		<jta-data-source>java:jboss/datasources/ATENDIMENTO_DB</jta-data-source>
-
-		<class>br.com.atendimento.model.domain.Atendimento</class>
+		<jta-data-source>java:jboss/datasources/ECOMMERCEDS</jta-data-source>
 
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />

@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import br.com.atendimento.utils.NotaAtendimentoEnum;
 
 @Entity
-@Table(name = "ATENDIMENTO", schema="ATENDIMENTO_DB")
+@Table(name = "ATENDIMENTO")
 public class Atendimento implements Serializable {
 
 	private static final long serialVersionUID = 1L;
